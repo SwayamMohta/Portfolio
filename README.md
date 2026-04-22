@@ -1,16 +1,126 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website built using React Router with a terminal-inspired UI that feels like a real developer workspace instead of a generic portfolio template.
 
-Currently, two official plugins are available:
+This project was created as part of a Web Technology assignment and focuses on combining clean design, terminal realism, and professional presentation while keeping the code simple, beginner-friendly, and assignment-safe.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Live Website: [https://swayammohta.github.io/Portfolio](https://swayammohta.github.io/Portfolio)
 
-## Expanding the ESLint configuration
+GitHub Repository: [https://github.com/SwayamMohta/Portfolio](https://github.com/SwayamMohta/Portfolio)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Features
+
+* Terminal-inspired portfolio UI
+* Command-style navigation
+* React Router based page routing
+* Home page with About Me, Research Interests, Personal Details, and Profile Picture
+* Projects page with GitHub repository links
+* Skills displayed in terminal-style structured output
+* Responsive layout
+* GitHub Pages deployment using HashRouter
+* Clean CSS styling without unnecessary libraries
+
+---
+
+## Pages Included
+
+### Home Page
+
+Includes:
+
+* About Me
+* Research Interests
+* Personal Details
+* Profile Picture
+
+### Projects Page
+
+Includes:
+
+* Project showcase
+* GitHub repository links for each project
+
+---
+
+## Tech Stack
+
+* React.js
+* React Router DOM
+* CSS
+* GitHub Pages
+
+---
+
+## Installation & Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/SwayamMohta/Portfolio.git
+cd Portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run locally:
+
+```bash
+npm start
+```
+
+---
+
+## Deployment
+
+This project is deployed using GitHub Pages.
+
+### Deployment Commands
+
+```bash
+npm install gh-pages --save-dev
+npm run deploy
+```
+
+### Important Configuration
+
+* `HashRouter` is used instead of `BrowserRouter`
+* `homepage` is configured inside `package.json`
+* `gh-pages` handles deployment to the `gh-pages` branch
+
+---
+
+## Project Structure
+
+```text
+portfolio/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── assets/
+│   ├── App.js
+│   ├── index.js
+│   └── styles/
+├── package.json
+└── README.md
+```
+
+---
+
+## Author
+
+**Swayam Mohta**
+
+
+
+
