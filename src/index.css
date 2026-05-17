@@ -10,10 +10,17 @@
 
 :root {
   --bg-page: #050505;
+  --bg-page-glow: #111111;
   --bg-term: #121212;
+  --bg-term-rgb: 18, 18, 18;
   --bg-header: #1c1c1c;
   --border-term: #282828;
   --border-dim: #1a1a1a;
+  --term-glow-rgb: 90, 240, 120;
+  --term-bg-top: rgba(15, 15, 15, 0.9);
+  --term-bg-bottom: rgba(12, 12, 12, 0.98);
+  --cmd-bar-bg: #0d0d0d;
+  --scanline-opacity: 0.13;
 
   --green: #5af078;
   --green-dim: #2e6e3e;
@@ -31,14 +38,74 @@
   --font: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
+:root[data-theme='light'] {
+  --bg-page: #eceff3;
+  --bg-page-glow: #fafbfc;
+  --bg-term: #f6f7f9;
+  --bg-term-rgb: 246, 247, 249;
+  --bg-header: #e9edf2;
+  --border-term: #c8d0da;
+  --border-dim: #d8dee7;
+  --term-glow-rgb: 52, 127, 235;
+  --term-bg-top: rgba(245, 247, 250, 0.95);
+  --term-bg-bottom: rgba(236, 240, 245, 0.98);
+  --cmd-bar-bg: #e7ecf2;
+  --scanline-opacity: 0.06;
+
+  --green: #177245;
+  --green-dim: #2f9b67;
+  --green-faint: rgba(23, 114, 69, 0.08);
+
+  --amber: #9b6304;
+  --red: #c33e3e;
+  --blue: #265ea7;
+
+  --text: #1f2a37;
+  --text-bright: #0f1722;
+  --text-muted: #4b5a6c;
+  --text-dim: #90a0b4;
+}
+
+:root[data-theme='ubuntu'] {
+  --bg-page: #1f1a24;
+  --bg-page-glow: #2f2537;
+  --bg-term: #2c001e;
+  --bg-term-rgb: 44, 0, 30;
+  --bg-header: #300a24;
+  --border-term: #5b334f;
+  --border-dim: #4a2940;
+  --term-glow-rgb: 233, 84, 32;
+  --term-bg-top: rgba(54, 12, 39, 0.95);
+  --term-bg-bottom: rgba(36, 6, 26, 0.99);
+  --cmd-bar-bg: #2a0820;
+  --scanline-opacity: 0.11;
+
+  --green: #ffb86c;
+  --green-dim: #b9722c;
+  --green-faint: rgba(255, 184, 108, 0.1);
+
+  --amber: #e89a3c;
+  --red: #ff6b6b;
+  --blue: #8be9fd;
+
+  --text: #f3dbe8;
+  --text-bright: #fff2fa;
+  --text-muted: #c39db6;
+  --text-dim: #7f5f76;
+}
+
 html,
 body {
-  background: var(--bg-page);
+  background: radial-gradient(circle at 50% 32%, var(--bg-page-glow) 0%, var(--bg-page) 72%);
   color: var(--text);
   font-family: var(--font);
   font-size: 13.5px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+#root {
   min-height: 100vh;
 }
 
@@ -57,10 +124,10 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--bg-page);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222;
+  background: var(--border-term);
   border-radius: 2px;
 }

@@ -1,28 +1,28 @@
+import SectionHeader from '../components/SectionHeader'
+
 const commands = [
-  { cmd: '/about',    desc: 'who I am, current status' },
+  { cmd: '/about', desc: 'who I am, current status' },
   { cmd: '/projects', desc: 'work I have shipped' },
-  { cmd: '/skills',   desc: 'technical stack' },
+  { cmd: '/skills', desc: 'technical stack' },
   { cmd: '/research', desc: 'areas I am exploring' },
-  { cmd: '/contact',  desc: 'how to reach me' },
-  { cmd: '/clear',    desc: 'clear terminal history' },
-  { cmd: '/help',     desc: 'show this message' },
+  { cmd: '/contact', desc: 'how to reach me' },
+  { cmd: '/theme list', desc: 'list available themes and how to set' },
+  { cmd: '/clear', desc: 'clear terminal history' },
+  { cmd: '/help', desc: 'show this message' },
 ]
 
-function HelpSection() {
+function HelpSection({ outputPacing }) {
   return (
     <div className="cmd-output">
-      <p className="out-comment">// swayam-portfolio v2.0 — command reference</p>
-      <br />
+      <SectionHeader text="// swayam-portfolio v2.0 - command reference" outputPacing={outputPacing} />
       <p className="out-muted">available commands:</p>
-      <br />
-      {commands.map((c) => (
-        <p key={c.cmd} className="help-row">
-          <span className="help-cmd">{c.cmd}</span>
-          <span className="out-muted">  —  {c.desc}</span>
+      {commands.map((command) => (
+        <p key={command.cmd} className="help-row">
+          <span className="help-cmd">{command.cmd}</span>
+          <span className="out-muted">  -  {command.desc}</span>
         </p>
       ))}
-      <br />
-      <p className="out-muted">// click any command above to run it</p>
+      <p className="out-muted">// shortcut aliases like about/projects still work</p>
     </div>
   )
 }

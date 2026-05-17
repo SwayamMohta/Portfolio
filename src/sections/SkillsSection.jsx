@@ -1,3 +1,5 @@
+import SectionHeader from '../components/SectionHeader'
+
 const skillGroups = [
   {
     group: 'languages',
@@ -17,28 +19,26 @@ const skillGroups = [
   },
   {
     group: 'tools',
-    items: ['Git', 'Github', 'Docker (basics)'],
+    items: ['Git', 'GitHub', 'Docker (basics)'],
   },
 ]
 
-function SkillsSection() {
+function SkillsSection({ outputPacing }) {
   return (
     <div className="cmd-output">
-      <p className="out-comment">// skill_check --list</p>
-      <br />
-      {skillGroups.map((sg) => (
-        <div key={sg.group} className="skill-group">
+      <SectionHeader text="// skill_check --list" outputPacing={outputPacing} />
+      {skillGroups.map((skillGroup) => (
+        <div key={skillGroup.group} className="skill-group">
           <p className="skill-group-label">
-            <span className="out-amber">{sg.group}</span>
+            <span className="out-amber">{skillGroup.group}</span>
             <span className="out-muted">:</span>
           </p>
-          {sg.items.map((item) => (
+          {skillGroup.items.map((item) => (
             <p key={item} className="skill-item">
-              <span className="out-muted">  ├─ </span>
+              <span className="out-muted">  |- </span>
               <span className="out-text">{item}</span>
             </p>
           ))}
-          <br />
         </div>
       ))}
     </div>

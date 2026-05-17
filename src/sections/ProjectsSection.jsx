@@ -1,3 +1,5 @@
+import SectionHeader from '../components/SectionHeader'
+
 const projects = [
   {
     id: 'presto-ai',
@@ -13,7 +15,7 @@ const projects = [
     name: 'DocBuilder',
     tag: 'Automation / Google Workspace',
     status: 'completed',
-    desc: 'Programmatic document generation using Google Workspace API. Takes structured input and outputs formatted Docs and Sheets — built for report automation.',
+    desc: 'Programmatic document generation using Google Workspace API. Takes structured input and outputs formatted Docs and Sheets - built for report automation.',
     stack: ['Python', 'Google APIs', 'OAuth2'],
     repo: 'https://github.com/SwayamMohta/cursor-for-forms-f1',
   },
@@ -31,37 +33,36 @@ const projects = [
     name: 'NLP Foundations',
     tag: 'Research / From Scratch',
     status: 'ongoing',
-    desc: 'From-scratch implementations of TF-IDF, Word2Vec (Skip-gram + CBOW), and BPE tokenization — no high-level ML libraries. Pure math and NumPy.',
+    desc: 'From-scratch implementations of TF-IDF, Word2Vec (Skip-gram + CBOW), and BPE tokenization with no high-level ML libraries. Pure math and NumPy.',
     stack: ['Python', 'NumPy', 'Matplotlib'],
     repo: 'https://github.com/SwayamMohta/NLP-FALL-2025',
   },
 ]
 
-function ProjectsSection() {
+function ProjectsSection({ outputPacing }) {
   return (
     <div className="cmd-output">
-      <p className="out-comment">// project_log --all</p>
-      <br />
-      {projects.map((p, i) => (
-        <div key={p.id} className="proj-entry">
+      <SectionHeader text="// project_log --all" outputPacing={outputPacing} />
+      {projects.map((project, index) => (
+        <div key={project.id} className="proj-entry">
           <div className="proj-header">
-            <span className="out-bright">[{String(i + 1).padStart(2, '0')}]</span>
-            <span className="proj-name"> {p.name}</span>
-            <span className="out-muted"> — {p.tag}</span>
-            <span className={`proj-status ${p.status}`}>
-              {' '}{p.status === 'completed' ? '✓' : '~'} {p.status}
+            <span className="out-bright">[{String(index + 1).padStart(2, '0')}]</span>
+            <span className="proj-name"> {project.name}</span>
+            <span className="out-muted"> - {project.tag}</span>
+            <span className={`proj-status ${project.status}`}>
+              {' '}{project.status === 'completed' ? '[ok]' : '[~]'} {project.status}
             </span>
           </div>
-          <p className="proj-desc">{p.desc}</p>
+          <p className="proj-desc">{project.desc}</p>
           <div className="proj-meta">
             <span className="out-muted">stack: </span>
-            <span className="proj-stack">{p.stack.join(', ')}</span>
+            <span className="proj-stack">{project.stack.join(', ')}</span>
             <span className="proj-repo-sep"> | </span>
-            <a href={p.repo} target="_blank" rel="noreferrer" className="proj-repo">
-              repo →
+            <a href={project.repo} target="_blank" rel="noreferrer" className="proj-repo">
+              repo -&gt;
             </a>
           </div>
-          {i < projects.length - 1 && <div className="proj-divider" />}
+          {index < projects.length - 1 && <div className="proj-divider" />}
         </div>
       ))}
     </div>

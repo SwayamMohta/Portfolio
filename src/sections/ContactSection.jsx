@@ -1,8 +1,9 @@
-function ContactSection() {
+import SectionHeader from '../components/SectionHeader'
+
+function ContactSection({ outputPacing }) {
   return (
     <div className="cmd-output">
-      <p className="out-comment">// contact.env — read-only</p>
-      <br />
+      <SectionHeader text="// contact.env - read-only" outputPacing={outputPacing} />
       <p className="out-line">
         <span className="out-amber">PERSONAL_EMAIL</span>
         <span className="out-sep"> = </span>
@@ -44,7 +45,6 @@ function ContactSection() {
           github.com/swayammohta
         </a>
       </p>
-      <br />
       <p className="out-muted">// open to full-stack, frontend, and AI/ML internship roles</p>
     </div>
   )
