@@ -628,21 +628,9 @@
     display: none;
   }
 
+  /* Hide all cmd pills on mobile — the drawer handles navigation */
   .cmd-btn {
-    padding: 8px 16px;
-    font-size: 12px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.04);
-    white-space: nowrap;
-    border-color: var(--border-dim);
-    color: var(--text);
-    transition: background 0.15s, border-color 0.15s;
-  }
-
-  .cmd-btn--active {
-    background: var(--green-faint);
-    color: var(--green);
-    border-color: var(--green-dim);
+    display: none;
   }
 
   /* Prevent browser automatic zoom-in shift when focusing input on mobile */
