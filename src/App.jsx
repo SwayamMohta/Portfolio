@@ -186,6 +186,7 @@ export function Terminal() {
   const [history, setHistory] = useState([])
   const [isMaximized, setIsMaximized] = useState(false)
   const [isClosed, setIsClosed] = useState(false)
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false)
   const [inputHistory, setInputHistory] = useState(() => safeLoadArray(STORAGE_KEYS.inputHistory))
   const [theme, setTheme] = useState(() => {
     try {
@@ -685,6 +686,43 @@ export function Terminal() {
         <div ref={bottomRef} />
       </div>
 
+      {/* Mobile slide-up command drawer */}
+      {isMobileDrawerOpen && (
+        <div
+          className="mobile-drawer-backdrop"
+          onClick={() => setIsMobileDrawerOpen(false)}
+        />
+      )}
+      <div className={`mobile-drawer ${isMobileDrawerOpen ? 'mobile-drawer--open' : ''}`}>
+        <div className="mobile-drawer-handle" onClick={() => setIsMobileDrawerOpen(false)} />
+        <p className="mobile-drawer-label">// run a command</p>
+        <div className="mobile-drawer-grid">
+          {CMD_LIST.filter(cmd => cmd !== '/clear').map((cmd) => (
+            <button
+              key={cmd}
+              type="button"
+              className={`mobile-drawer-btn ${activeCommand === cmd ? 'mobile-drawer-btn--active' : ''}`}
+              onClick={() => {
+                runCommand(cmd, { displayCmd: formatDisplayCommand(cmd) })
+                setIsMobileDrawerOpen(false)
+              }}
+            >
+              {formatDisplayCommand(cmd)}
+            </button>
+          ))}
+          <button
+            type="button"
+            className="mobile-drawer-btn mobile-drawer-btn--danger"
+            onClick={() => {
+              runCommand('/clear', { displayCmd: '/clear' })
+              setIsMobileDrawerOpen(false)
+            }}
+          >
+            /clear
+          </button>
+        </div>
+      </div>
+
       <div className="cmd-bar">
         <span className="cmd-bar-label">run:</span>
         <button
@@ -704,6 +742,15 @@ export function Terminal() {
             {formatDisplayCommand(cmd)}
           </button>
         ))}
+        {/* Mobile-only FAB to open the drawer */}
+        <button
+          type="button"
+          className="cmd-drawer-fab"
+          aria-label="Open command menu"
+          onClick={() => setIsMobileDrawerOpen(prev => !prev)}
+        >
+          ⌘
+        </button>
       </div>
     </div>
   )
