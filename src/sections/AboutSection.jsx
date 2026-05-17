@@ -9,23 +9,23 @@ function AboutSection({ outputPacing }) {
           <SectionHeader text="// about.log - loaded" outputPacing={outputPacing} />
           <p className="out-line">
             <span className="out-key">name</span>
-            <span className="out-sep">  =</span>
-            <span className="out-val"> Swayam Mohta</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">Swayam Mohta</span>
           </p>
           <p className="out-line">
             <span className="out-key">degree</span>
-            <span className="out-sep"> =</span>
-            <span className="out-val"> B.Tech - Artificial Intelligence</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">B.Tech - Artificial Intelligence</span>
           </p>
           <p className="out-line">
             <span className="out-key">uni</span>
-            <span className="out-sep">    =</span>
-            <span className="out-val"> Mahindra University, Hyderabad</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">Mahindra University, Hyderabad</span>
           </p>
           <p className="out-line">
             <span className="out-key">year</span>
-            <span className="out-sep">   =</span>
-            <span className="out-val"> 3rd year (2023-2027)</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">3rd year (2023-2027)</span>
           </p>
         </div>
 

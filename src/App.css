@@ -313,6 +313,13 @@
   font-size: 13px;
 }
 
+.out-key--wide {
+  color: var(--amber);
+  min-width: 140px;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
 .out-sep {
   color: var(--text-muted);
 }
@@ -651,6 +658,52 @@
 
   .out-para {
     text-align: left;
+  }
+
+  /* Stacking key-value pairs cleanly on narrow mobile devices to prevent breaks */
+  .out-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  .out-key,
+  .out-key--wide {
+    min-width: unset;
+    font-weight: 500;
+  }
+
+  .out-sep {
+    display: none; /* Hide equals signs on mobile to keep layout clean and nested */
+  }
+
+  .out-val,
+  .out-text,
+  .out-link {
+    padding-left: 8px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  /* Compact and modern skill tagging layout on mobile to prevent endless scrolling */
+  .skill-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .skill-group-label {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .skill-item {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 12.5px;
   }
 
   .reopen-btn {
