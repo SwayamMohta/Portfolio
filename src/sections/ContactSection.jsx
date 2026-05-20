@@ -47,7 +47,7 @@ function ContactSection({ outputPacing }) {
           github.com/swayammohta
         </a>
       </p>
-      <p className="out-muted">// open to full-stack, frontend, and AI/ML internship roles</p>
+      <p className="out-muted">// open to frontend-focused, react/typescript, and AI engineering internship roles</p>
     </div>
   )
 }

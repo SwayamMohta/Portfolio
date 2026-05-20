@@ -3,23 +3,27 @@ import SectionHeader from '../components/SectionHeader'
 const skillGroups = [
   {
     group: 'languages',
-    items: ['Python', 'JavaScript', 'C', 'Java', 'SQL', 'C++'],
+    items: ['Python', 'JavaScript', 'Java'],
   },
   {
     group: 'frontend',
-    items: ['React', 'HTML/CSS', 'Next JS'],
+    items: ['React.js', 'Next.js', 'HTML', 'CSS', 'TypeScript'],
   },
   {
-    group: 'backend',
-    items: ['Node.js', 'FastAPI', 'Express', 'PostgreSQL'],
+    group: 'backend_apis',
+    items: ['FastAPI', 'REST APIs', 'API Integration'],
   },
   {
-    group: 'ai_ml',
-    items: ['NLP', 'Machine Learning', 'LLMs', 'RAG Pipelines'],
+    group: 'state_management',
+    items: ['Context API'],
+  },
+  {
+    group: 'database',
+    items: ['PostgreSQL'],
   },
   {
     group: 'tools',
-    items: ['Git', 'GitHub', 'Docker (basics)'],
+    items: ['Git', 'GitHub'],
   },
 ]
 

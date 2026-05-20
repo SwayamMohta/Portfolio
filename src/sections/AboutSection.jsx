@@ -36,13 +36,56 @@ function AboutSection({ outputPacing }) {
 
       <div className="about-text-content">
         <p className="out-para">
-          I build things at the intersection of AI and software: NLP pipelines,
-          LLM systems, and full-stack web apps. I care about solving real problems,
-          not just code that looks impressive.
+          Frontend-focused AI Engineering undergraduate with hands-on experience building React.js and TypeScript applications with REST API integration and responsive UI design. Skilled in developing reusable component architectures, managing application state, and optimizing UI performance for scalable web applications.
         </p>
       </div>
 
-      <div className="research-block">
+      <div className="experience-block" style={{ marginTop: '16px' }}>
+        <SectionHeader text="// experience.log" outputPacing={outputPacing} />
+        <div style={{ marginBottom: '14px' }}>
+          <p className="out-line">
+            <span className="out-key">role</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">Web Development Member @ ENIGMA Tech Club</span>
+          </p>
+          <p className="out-line">
+            <span className="out-key">dates</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">Aug 2024 - Aug 2025</span>
+          </p>
+          <p className="out-para" style={{ paddingLeft: '28px', marginTop: '2px' }}>
+            Developed frontend features including anonymous posting, upvoting, and category-based filtering for a campus forum. Collaborated with backend developers and designers to integrate features and improve UI consistency.
+          </p>
+        </div>
+        <div>
+          <p className="out-line">
+            <span className="out-key">role</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">Graphic Designer @ Outreach Club</span>
+          </p>
+          <p className="out-line">
+            <span className="out-key">dates</span>
+            <span className="out-sep">= </span>
+            <span className="out-val">Aug 2024 - Jun 2025</span>
+          </p>
+          <p className="out-para" style={{ paddingLeft: '28px', marginTop: '2px' }}>
+            Designed digital assets and promotional materials, improving visual layout understanding and UI awareness.
+          </p>
+        </div>
+      </div>
+
+      <div className="achievements-block" style={{ marginTop: '16px' }}>
+        <SectionHeader text="// achievements.log" outputPacing={outputPacing} />
+        <p className="out-para">
+          <span className="out-muted">&gt; </span>
+          <span className="out-bright">Tech-A-Thon BIT Mesra:</span> Secured 3rd place among 1,600+ teams.
+          <br />
+          <span className="out-muted">&gt; </span>
+          <span className="out-bright">Hacktoberfest:</span> Ranked among top contributors through open-source pull requests.
+        </p>
+      </div>
+
+      <div className="research-block" style={{ marginTop: '16px' }}>
         <SectionHeader text="// research_interests.log" outputPacing={outputPacing} />
         <p className="out-para">
           <span className="out-muted">&gt; </span>
