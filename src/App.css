@@ -146,6 +146,7 @@
 }
 
 .session-prompt-line,
+.prompt-line,
 .live-prompt {
   display: flex;
   align-items: center;
@@ -580,12 +581,19 @@
 /* Mobile drawer — hidden completely on desktop */
 .mobile-drawer,
 .mobile-drawer-backdrop,
-.cmd-drawer-fab {
+.cmd-drawer-trigger {
   display: none;
 }
 
 @media (max-width: 600px) {
+  /* Prevent background page scroll & bounce for full-screen web app experience */
+  html,
+  body,
   #root {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
     padding: 0;
   }
 
@@ -595,7 +603,8 @@
     border-right: none;
     min-height: 100dvh;
     height: 100dvh;
-    overflow: visible; /* Allow fixed-position mobile drawer to escape parent clipping */
+    max-height: 100dvh;
+    overflow: hidden; /* Prevent parent scrolling overflow issues */
   }
 
   .term-chrome {
@@ -604,33 +613,27 @@
 
   .term-body {
     padding: 14px 16px 12px;
+    -webkit-overflow-scrolling: touch; /* Butter-smooth iOS scroll momentum */
   }
 
-  /* Sleek, Single-Line Swipable Dock for Shortcuts on Mobile */
+  /* Non-scrolling container for Menu button on Mobile */
   .cmd-bar {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 8px;
-    padding: 10px calc(12px + env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) calc(12px + env(safe-area-inset-left, 0px));
+    padding: 8px calc(12px + env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) calc(12px + env(safe-area-inset-left, 0px));
     background: var(--cmd-bar-bg);
     border-top: 1px solid var(--border-dim);
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
     flex-shrink: 0;
-  }
-
-  .cmd-bar::-webkit-scrollbar {
-    display: none;
+    align-items: center;
+    justify-content: center;
   }
 
   .cmd-bar-label {
     display: none;
   }
 
-  /* Hide all cmd pills on mobile — the drawer handles navigation */
+  /* Hide scrollable buttons on mobile as requested */
   .cmd-btn {
-    display: none;
+    display: none !important;
   }
 
   /* Prevent browser automatic zoom-in shift when focusing input on mobile */
@@ -638,40 +641,45 @@
     font-size: 16px !important;
   }
 
+  /* Keep About layout aligned like a standard CLI, center only the profile pic */
   .about-main {
     flex-direction: column-reverse;
-    align-items: center;
-    text-align: center;
+    align-items: stretch;
+    text-align: left;
     gap: 16px;
   }
 
   .about-profile-frame {
-    margin-top: 0;
-    margin-bottom: 8px;
+    margin: 0 auto 8px auto;
     width: 120px;
     height: 120px;
   }
 
-  /* Mobile FAB button to open drawer */
-  .cmd-drawer-fab {
+  /* Mobile bottom bar menu trigger button */
+  .cmd-drawer-trigger {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    gap: 8px;
+    width: 100%;
+    height: 38px;
     background: var(--green-faint);
-    border: 1.5px solid var(--green-dim);
+    border: 1px solid var(--green-dim);
     color: var(--green);
-    font-size: 18px;
+    font-family: var(--font);
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
+    box-shadow: 0 0 10px rgba(var(--term-glow-rgb), 0.1);
+    transition: all 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .cmd-drawer-fab:active {
+  .cmd-drawer-trigger:active {
     background: var(--green-dim);
+    color: var(--bg-term);
+    box-shadow: 0 0 15px rgba(var(--term-glow-rgb), 0.35);
   }
 
   /* Semi-transparent backdrop */
@@ -759,6 +767,19 @@
     border-style: dashed;
   }
 
+  /* Settings option spans full width with dashed borders */
+  .mobile-drawer-btn--meta {
+    grid-column: 1 / -1;
+    border-style: dashed;
+    color: var(--amber);
+  }
+
+  .mobile-drawer-btn--meta.mobile-drawer-btn--active {
+    background: var(--green-faint);
+    border-color: var(--green-dim);
+    color: var(--green);
+  }
+
   /* Stacking key-value pairs cleanly on narrow mobile devices to prevent breaks */
   .out-line {
     flex-direction: column;
@@ -780,29 +801,92 @@
   .out-val,
   .out-text,
   .out-link {
-    padding-left: 8px;
+    padding-left: 12px;
     word-break: break-word;
     overflow-wrap: anywhere;
   }
 
-  /* Compact and modern skill tagging layout on mobile to prevent endless scrolling */
+  /* Indent project description and metadata to line up under the name */
+  .proj-desc,
+  .proj-meta {
+    padding-left: 28px;
+  }
+
+  /* Structured columns for projects list using CSS grid */
+  .proj-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 4px 8px;
+    margin-bottom: 6px;
+  }
+
+  /* Style the status to align on the right */
+  .proj-status {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: right;
+  }
+
+  /* Force the project tag/category to span the entire second row and indent */
+  .proj-header > .out-muted {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding-left: 28px;
+    font-size: 12px;
+    margin-top: -2px;
+  }
+
+  /* Align command references cleanly on narrow screens */
+  .help-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+    align-items: start;
+  }
+
+  .help-cmd {
+    min-width: unset;
+  }
+
+  /* Hide the redundant prompt context to make room for terminal input */
+  .prompt-context {
+    display: none;
+  }
+
+  /* Compact horizontal tag layout for skills */
   .skill-group {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     gap: 6px;
     margin-bottom: 12px;
   }
 
   .skill-group-label {
     width: 100%;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    font-weight: 600;
   }
 
+  /* Hide the vertical list prefix (tree symbols) */
+  .skill-group .skill-item .out-muted {
+    display: none;
+  }
+
+  /* Modern terminal tags matching active theme colors */
   .skill-item {
     display: inline-block;
-    margin-right: 8px;
-    font-size: 12.5px;
+    background: var(--green-faint);
+    border: 1px solid rgba(var(--green), 0.2);
+    color: var(--green);
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 11.5px;
+    margin-right: 2px;
+    margin-bottom: 2px;
   }
 
   .reopen-btn {
@@ -842,5 +926,4 @@
     font-size: 14px;
     font-weight: 500;
   }
-
 }

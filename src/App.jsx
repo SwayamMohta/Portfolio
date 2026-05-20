@@ -720,6 +720,13 @@ export function Terminal() {
           >
             /clear
           </button>
+          <button
+            type="button"
+            className={`mobile-drawer-btn mobile-drawer-btn--meta ${outputPacing === 'typewriter' ? 'mobile-drawer-btn--active' : ''}`}
+            onClick={toggleOutputPacing}
+          >
+            pace: {outputPacing}
+          </button>
         </div>
       </div>
 
@@ -742,14 +749,17 @@ export function Terminal() {
             {formatDisplayCommand(cmd)}
           </button>
         ))}
-        {/* Mobile-only FAB to open the drawer */}
+        {/* Mobile-only menu toggle button */}
         <button
           type="button"
-          className="cmd-drawer-fab"
-          aria-label="Open command menu"
+          className="cmd-drawer-trigger"
           onClick={() => setIsMobileDrawerOpen(prev => !prev)}
         >
-          ⌘
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          select command
         </button>
       </div>
     </div>
