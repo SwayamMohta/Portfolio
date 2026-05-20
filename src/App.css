@@ -567,6 +567,11 @@
   opacity: 1;
 }
 
+.exp-desc {
+  padding-left: 28px;
+  margin-top: 2px;
+}
+
 .personal-details-block,
 .research-block {
   padding-top: 4px;
@@ -650,9 +655,10 @@
   }
 
   .about-profile-frame {
-    margin: 0 auto 8px auto;
-    width: 120px;
-    height: 120px;
+    margin: 0 auto 12px auto;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
   }
 
   /* Mobile bottom bar menu trigger button */
@@ -780,36 +786,43 @@
     color: var(--green);
   }
 
-  /* Stacking key-value pairs cleanly on narrow mobile devices to prevent breaks */
+  /* Keep key-value lines inline like a real terminal */
   .out-line {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    margin-bottom: 8px;
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin-bottom: 4px;
   }
 
-  .out-key,
+  .out-key {
+    min-width: 65px !important;
+    flex-shrink: 0;
+  }
+
   .out-key--wide {
-    min-width: unset;
-    font-weight: 500;
+    min-width: 110px !important;
+    flex-shrink: 0;
   }
 
   .out-sep {
-    display: none; /* Hide equals signs on mobile to keep layout clean and nested */
+    display: inline !important;
+    flex-shrink: 0;
   }
 
   .out-val,
   .out-text,
   .out-link {
-    padding-left: 12px;
-    word-break: break-word;
+    padding-left: 0;
+    word-break: break-all;
     overflow-wrap: anywhere;
   }
 
-  /* Indent project description and metadata to line up under the name */
+  /* Compact indentation for description and metadata on mobile screens to save space */
   .proj-desc,
-  .proj-meta {
-    padding-left: 28px;
+  .proj-meta,
+  .exp-desc {
+    padding-left: 12px !important;
   }
 
   /* Structured columns for projects list using CSS grid */
@@ -833,7 +846,7 @@
   .proj-header > .out-muted {
     grid-column: 1 / -1;
     grid-row: 2;
-    padding-left: 28px;
+    padding-left: 12px !important;
     font-size: 12px;
     margin-top: -2px;
   }

@@ -53,7 +53,7 @@ function AboutSection({ outputPacing }) {
             <span className="out-sep">= </span>
             <span className="out-val">Aug 2024 - Aug 2025</span>
           </p>
-          <p className="out-para" style={{ paddingLeft: '28px', marginTop: '2px' }}>
+          <p className="out-para exp-desc">
             Developed frontend features including anonymous posting, upvoting, and category-based filtering for a campus forum. Collaborated with backend developers and designers to integrate features and improve UI consistency.
           </p>
         </div>
@@ -68,7 +68,7 @@ function AboutSection({ outputPacing }) {
             <span className="out-sep">= </span>
             <span className="out-val">Aug 2024 - Jun 2025</span>
           </p>
-          <p className="out-para" style={{ paddingLeft: '28px', marginTop: '2px' }}>
+          <p className="out-para exp-desc">
             Designed digital assets and promotional materials, improving visual layout understanding and UI awareness.
           </p>
         </div>
